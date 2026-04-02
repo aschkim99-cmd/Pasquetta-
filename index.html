@@ -477,10 +477,28 @@
     </main>
   </div>
     <script>
-    const STORAGE_KEY = 'pasquettaAppUsers_v2';
-    const SETTINGS_KEY = 'pasquettaAppSettings_v2';
+const STORAGE_KEY = 'pasquettaAppUsers_v2';
+const SETTINGS_KEY = 'pasquettaAppSettings_v2';
 
-    const defaultUsers = [
+// Variabili che verranno riempite dal file JSON
+let defaultUsers = [];
+let defaultSettings = {};
+
+// Funzione per caricare i dati dal file JSON sul server
+async function loadDataFromServer() {
+  try {
+    const response = await fetch('data.json?t=' + Date.now());
+    if (!response.ok) throw new Error('File non trovato');
+    const data = await response.json();
+    defaultUsers = data.users || [];
+    defaultSettings = data.settings || {
+      adminPhone: '3663594487',
+      adminPassword: 'Blablaric.77'
+    };
+    return true;
+  } catch (error) {
+    console.warn('Errore nel caricare data.json, uso dati di fallback');
+    defaultUsers = [
       {
         id: crypto.randomUUID(),
         name: 'Marco',
@@ -494,28 +512,15 @@
         phone: '3331111113',
         amount: '16.50',
         phrase: 'Nessun allarme, solo una simpatica richiesta economica a fini conviviali.'
-      },
-      {
-        id: crypto.randomUUID(),
-        name: 'Luca',
-        phone: '3331111114',
-        amount: '19.00',
-        phrase: 'Il reparto logistico conferma che la tua quota sostiene il progresso della giornata.'
-      },
-      {
-        id: crypto.randomUUID(),
-        name: 'Sara',
-        phone: '3331111115',
-        amount: '17.00',
-        phrase: 'Il tuo contributo è stato giudicato necessario e anche molto gradito.'
       }
     ];
-
-    const defaultSettings = {
+    defaultSettings = {
       adminPhone: '3663594487',
       adminPassword: 'Blablaric.77'
     };
-
+    return false;
+  }
+}
     const els = {
       phoneInput: document.getElementById('phoneInput'),
       adminPasswordInput: document.getElementById('adminPasswordInput'),
@@ -553,23 +558,29 @@
     let users = loadUsers();
     let settings = loadSettings();
     let selectedUserId = null;
-          function loadUsers() {
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        return raw ? JSON.parse(raw) : defaultUsers;
-      } catch (err) {
-        return defaultUsers;
-      }
+      function loadUsers() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      return JSON.parse(raw);
     }
+    return [...defaultUsers];
+  } catch (err) {
+    return [...defaultUsers];
+  }
+}
 
-    function loadSettings() {
-      try {
-        const raw = localStorage.getItem(SETTINGS_KEY);
-        return raw ? JSON.parse(raw) : defaultSettings;
-      } catch (err) {
-        return defaultSettings;
-      }
+function loadSettings() {
+  try {
+    const raw = localStorage.getItem(SETTINGS_KEY);
+    if (raw) {
+      return JSON.parse(raw);
     }
+    return { ...defaultSettings };
+  } catch (err) {
+    return { ...defaultSettings };
+  }
+}
 
     function persist() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
@@ -856,8 +867,16 @@
 })();
 
     // Inizializzazione iniziale
-    clearEditor();
-    persist();
+   // Inizializzazione: prima carica i dati dal server
+(async function init() {
+  await loadDataFromServer();
+  
+  users = loadUsers();
+  settings = loadSettings();
+  
+  clearEditor();
+  persist();
+})();
   </script>
 </body>
 </html>
