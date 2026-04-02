@@ -5,32 +5,11 @@
   },
   "users": [
     {
-      "id": "user-1-marco",
-      "name": "Marco",
-      "phone": "3331111112",
-      "amount": "18.00",
-      "phrase": "Per te il sistema segnala una lieve ma concreta esposizione verso la carne alla brace."
-    },
-    {
-      "id": "user-2-giulia",
-      "name": "Giulia",
-      "phone": "3331111113",
-      "amount": "16.50",
-      "phrase": "Nessun allarme, solo una simpatica richiesta economica a fini conviviali."
-    },
-    {
-      "id": "user-3-lucia",
-      "name": "Lucia",
-      "phone": "3331111114",
-      "amount": "19.00",
-      "phrase": "Il reparto logistico conferma che la tua quota sostiene il progresso della giornata."
-    },
-    {
-      "id": "user-4-sara",
-      "name": "Sara",
-      "phone": "3331111115",
-      "amount": "17.00",
-      "phrase": ""
+      "id": "f02ef820-3142-4afd-896b-fb2fc96149cf",
+      "name": "EleoRora",
+      "phone": "3891882448",
+      "amount": "0",
+      "phrase": "Tu non paghi niente perchè sei l'amore mio. Ti amo"
     }
   ]
 }
