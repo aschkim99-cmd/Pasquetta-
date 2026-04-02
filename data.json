@@ -5,6 +5,13 @@
   },
   "users": [
     {
+      "id": "4cff6d28-d484-4148-8af5-65191e18fe47",
+      "name": "Thomas",
+      "phone": "3892079583",
+      "amount": "20.00",
+      "phrase": "Sei proprio brutto"
+    },
+    {
       "id": "f02ef820-3142-4afd-896b-fb2fc96149cf",
       "name": "EleoRora",
       "phone": "3891882448",
