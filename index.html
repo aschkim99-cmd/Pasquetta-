@@ -579,27 +579,6 @@
       </section>
     </main>
   </div>
-  // Pulsante copia IBAN
-const copyIbanBtn = document.getElementById('copyIbanBtn');
-const ibanCode = document.getElementById('ibanCode');
-
-if (copyIbanBtn && ibanCode) {
-  copyIbanBtn.addEventListener('click', async () => {
-    const iban = ibanCode.textContent;
-    try {
-      await navigator.clipboard.writeText(iban);
-      const originalText = copyIbanBtn.textContent;
-      copyIbanBtn.textContent = '✅ Copiato!';
-      copyIbanBtn.style.background = '#437a22';
-      setTimeout(() => {
-        copyIbanBtn.textContent = originalText;
-        copyIbanBtn.style.background = '';
-      }, 2000);
-    } catch (err) {
-      alert('Premi Ctrl+C per copiare: ' + iban);
-    }
-  });
-}
     <script>
 const STORAGE_KEY = 'pasquettaAppUsers_v2';
 const SETTINGS_KEY = 'pasquettaAppSettings_v2';
@@ -1014,6 +993,27 @@ function loadSettings() {
   clearEditor();
   persist();
 })();
+        // Pulsante copia IBAN
+  const copyIbanBtn = document.getElementById('copyIbanBtn');
+  const ibanCode = document.getElementById('ibanCode');
+  
+  if (copyIbanBtn && ibanCode) {
+    copyIbanBtn.addEventListener('click', async () => {
+      const iban = ibanCode.textContent;
+      try {
+        await navigator.clipboard.writeText(iban);
+        const originalText = copyIbanBtn.textContent;
+        copyIbanBtn.textContent = '✅ Copiato!';
+        copyIbanBtn.style.background = '#437a22';
+        setTimeout(() => {
+          copyIbanBtn.textContent = originalText;
+          copyIbanBtn.style.background = '';
+        }, 2000);
+      } catch (err) {
+        alert('Premi Ctrl+C per copiare: ' + iban);
+      }
+    });
+  }
   </script>
 </body>
 </html>
