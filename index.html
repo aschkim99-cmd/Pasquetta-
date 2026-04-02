@@ -630,6 +630,36 @@
     </main>
   </div>
     <script>
+      // Libreria confetti (semplice e leggera)
+function esplodiConfetti() {
+  const colors = ['#f39c12', '#e74c3c', '#2ecc71', '#9b59b6', '#3498db', '#f1c40f', '#ff6b6b', '#4ecdc4'];
+  for(let i = 0; i < 100; i++) {
+    setTimeout(() => {
+      const uovo = document.createElement('div');
+      uovo.style.position = 'fixed';
+      uovo.style.left = Math.random() * window.innerWidth + 'px';
+      uovo.style.top = '-30px';
+      uovo.style.width = Math.random() * 12 + 8 + 'px';
+      uovo.style.height = Math.random() * 16 + 10 + 'px';
+      uovo.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      uovo.style.borderRadius = '50% / 60% 60% 40% 40%';
+      uovo.style.pointerEvents = 'none';
+      uovo.style.zIndex = '9999';
+      uovo.style.transition = 'all 1.8s ease-out';
+      uovo.style.boxShadow = '0 2px 5px rgba(0,0,0,0.2)';
+      document.body.appendChild(uovo);
+      
+      setTimeout(() => {
+        uovo.style.transform = `translateY(${window.innerHeight + 80}px) rotate(${Math.random() * 720 - 360}deg)`;
+        uovo.style.opacity = '0';
+      }, 10);
+      
+      setTimeout(() => {
+        uovo.remove();
+      }, 2000);
+    }, i * 12);
+  }
+}
 const STORAGE_KEY = 'pasquettaAppUsers_v2';
 const SETTINGS_KEY = 'pasquettaAppSettings_v2';
 
@@ -1047,23 +1077,27 @@ function loadSettings() {
   const copyIbanBtn = document.getElementById('copyIbanBtn');
   const ibanCode = document.getElementById('ibanCode');
   
-  if (copyIbanBtn && ibanCode) {
-    copyIbanBtn.addEventListener('click', async () => {
-      const iban = ibanCode.textContent;
-      try {
-        await navigator.clipboard.writeText(iban);
-        const originalText = copyIbanBtn.textContent;
-        copyIbanBtn.textContent = '✅ Copiato!';
-        copyIbanBtn.style.background = '#437a22';
-        setTimeout(() => {
-          copyIbanBtn.textContent = originalText;
-          copyIbanBtn.style.background = '';
-        }, 2000);
-      } catch (err) {
-        alert('Premi Ctrl+C per copiare: ' + iban);
-      }
-    });
-  }
+if (copyIbanBtn && ibanCode) {
+  copyIbanBtn.addEventListener('click', async () => {
+    const iban = ibanCode.textContent;
+    try {
+      await navigator.clipboard.writeText(iban);
+      
+      // 🎉 ESPLODONO I CONFETTI! 🎉
+      esplodiConfetti();
+      
+      const originalText = copyIbanBtn.textContent;
+      copyIbanBtn.textContent = '✅ Copiato!';
+      copyIbanBtn.style.background = '#437a22';
+      setTimeout(() => {
+        copyIbanBtn.textContent = originalText;
+        copyIbanBtn.style.background = '';
+      }, 2000);
+    } catch (err) {
+      alert('Premi Ctrl+C per copiare: ' + iban);
+    }
+  });
+}
   </script>
 </body>
 </html>
