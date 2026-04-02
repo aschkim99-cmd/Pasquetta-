@@ -368,6 +368,87 @@
   background-position: top left !important;
   background-size: 160px !important;
 }
+    /* Riquadro IBAN per la schermata utente */
+.iban-box {
+  margin-top: 28px;
+  padding: 20px;
+  background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+  border-radius: 20px;
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+  box-shadow: var(--shadow2);
+}
+
+.iban-header {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+.iban-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.iban-content code {
+  flex: 1;
+  padding: 14px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  font-family: monospace;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: var(--text);
+  word-break: break-all;
+}
+
+.copy-iban-btn {
+  background: var(--primary);
+  border: none;
+  border-radius: 9999px;
+  padding: 12px 20px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 0.9rem;
+}
+
+.copy-iban-btn:hover {
+  background: var(--primary2);
+  transform: scale(0.97);
+}
+
+.iban-message {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 12px 0 0;
+  padding-top: 12px;
+  border-top: 1px dashed color-mix(in srgb, var(--primary) 20%, transparent);
+  line-height: 1.5;
+}
+
+.iban-message strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Versione mobile */
+@media (max-width: 640px) {
+  .iban-content {
+    flex-direction: column;
+  }
+  .copy-iban-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
   </style>
 </head>
 <body>
@@ -406,19 +487,34 @@
         </form>
       </section>
 
-      <section id="userView" class="user-view hidden">
-        <div class="panel user-card">
-          <div class="utility-row" style="justify-content:space-between;">
-            <div>
-              <span class="badge">Area personale</span>
-              <h2 id="userTitle" style="font-size:clamp(1.5rem,3vw,2.3rem); margin-top:18px">Ciao</h2>
-            </div>
-            <button class="ghost" type="button" id="backToLoginBtn">Torna al login</button>
-          </div>
-          <div class="price" id="userAmount">€ 0,00</div>
-          <p class="phrase" id="userPhrase">Qui comparirà la frase personalizzata dell’utente selezionato.</p>
-        </div>
-      </section>
+<section id="userView" class="user-view hidden">
+  <div class="panel user-card">
+    <div class="utility-row" style="justify-content:space-between;">
+      <div>
+        <span class="badge">Area personale</span>
+        <h2 id="userTitle" style="font-size:clamp(1.5rem,3vw,2.3rem); margin-top:18px">Ciao</h2>
+      </div>
+      <button class="ghost" type="button" id="backToLoginBtn">Torna al login</button>
+    </div>
+    <div class="price" id="userAmount">€ 0,00</div>
+    <p class="phrase" id="userPhrase">Qui comparirà la frase personalizzata dell’utente selezionato.</p>
+    
+    <!-- Riquadro IBAN con pulsante copia -->
+    <div class="iban-box">
+      <div class="iban-header">
+        <span>🐣 IBAN per la benedizione</span>
+      </div>
+      <div class="iban-content">
+        <code id="ibanCode">IT44Q0200809500000421568263</code>
+        <button class="copy-iban-btn" id="copyIbanBtn">📋 Copia IBAN</button>
+      </div>
+      <p class="iban-message">
+        🙏 Dona al Riccardo per-mille a questo IBAN. La donazione parte da un minimo dell'importo visualizzato sopra.<br>
+        <strong>✨ Chi donerà di più si aggiudicherà una benedizione da me stesso medesimo in persona! ✨</strong>
+      </p>
+    </div>
+  </div>
+</section>
 
       <section id="adminView" class="admin-view hidden">
         <div class="panel admin-card">
@@ -483,6 +579,27 @@
       </section>
     </main>
   </div>
+  // Pulsante copia IBAN
+const copyIbanBtn = document.getElementById('copyIbanBtn');
+const ibanCode = document.getElementById('ibanCode');
+
+if (copyIbanBtn && ibanCode) {
+  copyIbanBtn.addEventListener('click', async () => {
+    const iban = ibanCode.textContent;
+    try {
+      await navigator.clipboard.writeText(iban);
+      const originalText = copyIbanBtn.textContent;
+      copyIbanBtn.textContent = '✅ Copiato!';
+      copyIbanBtn.style.background = '#437a22';
+      setTimeout(() => {
+        copyIbanBtn.textContent = originalText;
+        copyIbanBtn.style.background = '';
+      }, 2000);
+    } catch (err) {
+      alert('Premi Ctrl+C per copiare: ' + iban);
+    }
+  });
+}
     <script>
 const STORAGE_KEY = 'pasquettaAppUsers_v2';
 const SETTINGS_KEY = 'pasquettaAppSettings_v2';
