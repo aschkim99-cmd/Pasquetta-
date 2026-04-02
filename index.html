@@ -438,6 +438,29 @@
   color: var(--primary);
   font-weight: 700;
 }
+    /* Intestatario IBAN */
+.iban-intestatario {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  margin: 12px 0 8px;
+  background: color-mix(in srgb, var(--primary) 12%, var(--surface));
+  border-radius: 14px;
+  border-left: 4px solid var(--primary);
+  font-size: 0.95rem;
+}
+
+.iban-intestatario span {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.iban-intestatario strong {
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
 
 /* Versione mobile */
 @media (max-width: 640px) {
@@ -500,19 +523,26 @@
     <p class="phrase" id="userPhrase">Qui comparirà la frase personalizzata dell’utente selezionato.</p>
     
     <!-- Riquadro IBAN con pulsante copia -->
-    <div class="iban-box">
-      <div class="iban-header">
-        <span>🐣 IBAN per la benedizione</span>
-      </div>
-      <div class="iban-content">
-        <code id="ibanCode">IT44Q0200809500000421568263</code>
-        <button class="copy-iban-btn" id="copyIbanBtn">📋 Copia IBAN</button>
-      </div>
-      <p class="iban-message">
-        🙏 Dona al Riccardo per-mille a questo IBAN. La donazione parte da un minimo dell'importo visualizzato sopra.<br>
-        <strong>✨ Chi donerà di più si aggiudicherà una benedizione da me stesso medesimo in persona! ✨</strong>
-      </p>
-    </div>
+<div class="iban-box">
+  <div class="iban-header">
+    <span>🐣 IBAN per la benedizione</span>
+  </div>
+  <div class="iban-content">
+    <code id="ibanCode">IT44Q0200809500000421568263</code>
+    <button class="copy-iban-btn" id="copyIbanBtn">📋 Copia IBAN</button>
+  </div>
+  
+  <!-- Intestatario -->
+  <div class="iban-intestatario">
+    <span>🏦 Intestatario:</span>
+    <strong>Riccardo Casini</strong>
+  </div>
+  
+  <p class="iban-message">
+    🙏 Dona al Riccardo per-mille a questo IBAN. La donazione parte da un minimo dell'importo visualizzato sopra.<br>
+    <strong>✨ Chi donerà di più si aggiudicherà una benedizione da me stesso medesimo in persona! ✨</strong>
+  </p>
+</div>
   </div>
 </section>
 
