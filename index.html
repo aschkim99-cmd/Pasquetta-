@@ -558,12 +558,20 @@ async function loadDataFromServer() {
     let users = loadUsers();
     let settings = loadSettings();
     let selectedUserId = null;
-      function loadUsers() {
+function loadUsers() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) {
-      return JSON.parse(raw);
+    // LEGGE SEMPRE DA data.json, ignora i vecchi dati del browser
+    // Se vuoi mantenere le modifiche locali, cambia false in true qui sotto
+    const USA_SOLO_DATI_LOCALI = false;
+    
+    if (USA_SOLO_DATI_LOCALI) {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        return JSON.parse(raw);
+      }
     }
+    
+    // FORZA l'uso dei dati dal server
     return [...defaultUsers];
   } catch (err) {
     return [...defaultUsers];
@@ -572,10 +580,15 @@ async function loadDataFromServer() {
 
 function loadSettings() {
   try {
-    const raw = localStorage.getItem(SETTINGS_KEY);
-    if (raw) {
-      return JSON.parse(raw);
+    const USA_SOLO_DATI_LOCALI = false;
+    
+    if (USA_SOLO_DATI_LOCALI) {
+      const raw = localStorage.getItem(SETTINGS_KEY);
+      if (raw) {
+        return JSON.parse(raw);
+      }
     }
+    
     return { ...defaultSettings };
   } catch (err) {
     return { ...defaultSettings };
