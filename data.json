@@ -5,11 +5,137 @@
   },
   "users": [
     {
+      "id": "07832fa4-7349-4ccf-813f-b9a9071d4997",
+      "name": "Leonardo",
+      "phone": "3921949645",
+      "amount": "13.5",
+      "phrase": "Narrami il segreto oh maestro, su come sei sopravvissuto per tutti questi anni al CDV"
+    },
+    {
+      "id": "75a96654-0db3-4e42-a8a2-dbfcb946536d",
+      "name": "Gianmarco",
+      "phone": "3932132402",
+      "amount": "13.5",
+      "phrase": "Bella Gianma? Che dici? N'altra partitella a mondialito sulla spiaggia? O tedesca de notte?"
+    },
+    {
+      "id": "7ac0bf81-2a46-41a9-a68d-3e1acbdb8437",
+      "name": "Claudia",
+      "phone": "3931274667",
+      "amount": "13.5",
+      "phrase": "Grazie per avermi insegnato una parola nuova: vettovaglie.. all'inizio pensavo fosse un nuovo tipo di treno oltre al frecciarossa e frecciargento"
+    },
+    {
+      "id": "66664c2e-704e-4fe7-8206-c91d688293cd",
+      "name": "Gabriele",
+      "phone": "3881186939",
+      "amount": "13.5",
+      "phrase": "M'hanno rotto tutti er cazzo co ste squadre de merda.. namo ar campetto e famose la nostra"
+    },
+    {
+      "id": "d3265978-af23-4a85-af2b-c791ee54725b",
+      "name": "Alessio",
+      "phone": "3460827999",
+      "amount": "13.5",
+      "phrase": "Frate stai attento.. troppe storie co minorenni su instagram.. poi la postale inizia a indaga.. da retta a me.."
+    },
+    {
+      "id": "fb8e62ae-fda5-4bdd-9307-78c002ad0850",
+      "name": "Andrea",
+      "phone": "3456093136",
+      "amount": "13.5",
+      "phrase": "Non ci conosciamo ancora, ma se ti piace la birra, i cani e la fi.. la fioritura delle margherite, siamo sulla buona strada per essere amici :)"
+    },
+    {
+      "id": "5b1ef1fe-84e3-464e-9358-eac663a86cd0",
+      "name": "Teo",
+      "phone": "3276617664",
+      "amount": "13.5",
+      "phrase": "Io un pò ce l'ho con te.. sai perché? Perchè dovevi avvisarmi che tua sorella era pazzaaaa (immagina il meme di IronMan e Cap dove Tony dice a Steve: tu lo sapevi?)"
+    },
+    {
+      "id": "1796683e-dfc2-48c7-bf50-549c8264d9a7",
+      "name": "Marta",
+      "phone": "3337930563",
+      "amount": "13.5",
+      "phrase": "Dottoressa! Lo so pare brutto da chiede, ma n'è che per caso c'hai da accende qualcosa? Ho fatto un esame brutto e vorrei dimentica tutto co na bella sbuffata :)"
+    },
+    {
+      "id": "1f54e5d7-d81c-44da-9b2b-c1801a746d0a",
+      "name": "Lorenzo",
+      "phone": "3509853975",
+      "amount": "13.5",
+      "phrase": "Lo so che te le aggiusti, ma se devo spezza le ossa a qualcuno.. me sai di i punti dove devo fa leva per romperle più facilmente? Grazie"
+    },
+    {
+      "id": "1d1e74c7-fd98-48d6-9604-95a9f4a65974",
+      "name": "Linda",
+      "phone": "3662506355",
+      "amount": "13.5",
+      "phrase": "Aspe si mi ricordo di te.. tu sei a mijore amica di Cristiana ve? Mamma mia, poi oh siete proprio uguali, soprattutto la voce"
+    },
+    {
+      "id": "03b332fd-2ddb-4812-810e-dfac6d5a2f5e",
+      "name": "Giorgia",
+      "phone": "3456523240",
+      "amount": "13.5",
+      "phrase": "Giorgi ricorda, prima regola: se ce stanno le guardie, mettilo via er telefono ok?"
+    },
+    {
+      "id": "3b6c4e44-b015-4cef-b8e9-f5fd594e0813",
+      "name": "Francesca",
+      "phone": "3459792246",
+      "amount": "13.5",
+      "phrase": "Aoh! Te lo sei visto Toy Story? Guarda che se ancora non l'hai visto ti porto il proiettore e ti ci costringo a guardarlo eh"
+    },
+    {
+      "id": "c6653d9d-bf24-4f57-935f-827083cfb61b",
+      "name": "Fefe",
+      "phone": "3348569989",
+      "amount": "13.5",
+      "phrase": "Caio Fefaaaaaaa.. riuscirai sta volta a rimanete con noi oltre le 9:59 di sera? Me lo fai sto regalino?"
+    },
+    {
+      "id": "bd1a3041-5dec-41f5-b015-17275b850f50",
+      "name": "Federico",
+      "phone": "3276919323",
+      "amount": "13.5",
+      "phrase": "Mi dispiace Fe.. a sta festa non ce stanno minorenni per te. Lo so lo so, ti giuro che una volta ti ci accompagno all'uscita di una scuola elementare a scieglerla con KM 0"
+    },
+    {
+      "id": "6d707516-fdc0-4ec1-8d47-e24352db8a10",
+      "name": "Fabrizio",
+      "phone": "3337791595",
+      "amount": "0",
+      "phrase": "Ovviamente tu non mi devi niente ma la somma che devo io a te ce l'ha la donna tua.. m'ha minacciato dicendomi che li voleva solo lei e quindi niente. DAJE ROMA DAJEEE ER SAMBUCA MULINARI CURATIVOOOO"
+    },
+    {
+      "id": "c1f4b9f8-f954-4ebc-9b14-33138d6edd5c",
+      "name": "Elisa A.",
+      "phone": "3291652822",
+      "amount": "13.5",
+      "phrase": "Uelà, quando andiamo a fa er culo a tutti a burraco? Tua madre ha lanciato il guanto della sfida.. mia nonna e lei contro noi due"
+    },
+    {
+      "id": "f837b7ff-a8db-4ff7-a15b-ce96cd8f8657",
+      "name": "Elisa C.",
+      "phone": "3459958782",
+      "amount": "23",
+      "phrase": "Ovviamente tu non mi devi niente, l'importo sopra è quello che devo io a te e che devi dividere con l'OMO tuo, Comunque viva er du.. ehm no dai Eli n'esagerà"
+    },
+    {
+      "id": "99aea50c-ee23-4ddc-aaf4-a409f9764f4c",
+      "name": "Arianna",
+      "phone": "3409902416",
+      "amount": "13.5",
+      "phrase": "Ciao Ari, tutto ok? sto cercando una frase ironica solo per te ma sei troppo good vibes e quindi niente.. tanto fiori per te :)"
+    },
+    {
       "id": "4cff6d28-d484-4148-8af5-65191e18fe47",
       "name": "Thomas",
       "phone": "3892079583",
-      "amount": "20.00",
-      "phrase": "Sei proprio brutto"
+      "amount": "13.5",
+      "phrase": "E che cazzo, sbrigati a copia l'Iban che mi mandi in crush il sito per quanto SEI BRUUUTTTOOOO!!!!"
     },
     {
       "id": "f02ef820-3142-4afd-896b-fb2fc96149cf",
