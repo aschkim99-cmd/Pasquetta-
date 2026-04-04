@@ -860,14 +860,32 @@ function loadSettings() {
       toggleAdminField();
     }
 
-    function toggleAdminField() {
-      const normalized = normalizePhone(els.phoneInput.value);
-      const adminPhone = normalizePhone(settings.adminPhone);
-      const show = normalized === adminPhone;
-      els.adminPasswordWrap.classList.toggle('visible', show);
-      els.adminPasswordInput.required = show;
-      if (!show) els.adminPasswordInput.value = '';
+function toggleAdminField() {
+  const normalized = normalizePhone(els.phoneInput.value);
+  const adminPhone = normalizePhone(settings.adminPhone);
+  const eleonoraPhone = normalizePhone(settings.eleonoraPhone || '');
+  
+  const isAdmin = normalized === adminPhone;
+  const isEleonora = normalized === eleonoraPhone;
+  const show = isAdmin || isEleonora;
+  
+  els.adminPasswordWrap.classList.toggle('visible', show);
+  els.adminPasswordInput.required = show;
+  
+  // Cambia il label in base a chi sta facendo login
+  const label = document.querySelector('#adminPasswordWrap label');
+  if (label) {
+    if (isAdmin) {
+      label.textContent = 'Password amministratore';
+    } else if (isEleonora) {
+      label.textContent = '🔐 Password personale Eleonora';
+    } else {
+      label.textContent = 'Password';
     }
+  }
+  
+  if (!show) els.adminPasswordInput.value = '';
+}
 
     function fillEditor(id) {
       const user = users.find(u => u.id === id);
@@ -1001,20 +1019,45 @@ function loadSettings() {
         return;
       }
 
-      if (phone === adminPhone) {
-        if (!els.adminPasswordInput.value) {
-          els.loginStatus.textContent = 'Inserisci la password amministratore per proseguire.';
-          els.loginStatus.className = 'status err';
-          return;
-        }
-        if (els.adminPasswordInput.value !== settings.adminPassword) {
-          els.loginStatus.textContent = 'Password amministratore non corretta.';
-          els.loginStatus.className = 'status err';
-          return;
-        }
-        openAdminView();
-        return;
-      }
+// Controllo se è admin
+if (phone === adminPhone) {
+  if (!els.adminPasswordInput.value) {
+    els.loginStatus.textContent = 'Inserisci la password amministratore per proseguire.';
+    els.loginStatus.className = 'status err';
+    return;
+  }
+  if (els.adminPasswordInput.value !== settings.adminPassword) {
+    els.loginStatus.textContent = 'Password amministratore non corretta.';
+    els.loginStatus.className = 'status err';
+    return;
+  }
+  openAdminView();
+  return;
+}
+
+// Controllo se è Eleonora
+const eleonoraPhone = normalizePhone(settings.eleonoraPhone || '');
+if (phone === eleonoraPhone) {
+  if (!els.adminPasswordInput.value) {
+    els.loginStatus.textContent = 'Inserisci la password personale di Eleonora per proseguire.';
+    els.loginStatus.className = 'status err';
+    return;
+  }
+  if (els.adminPasswordInput.value !== settings.eleonoraPassword) {
+    els.loginStatus.textContent = 'Password non corretta.';
+    els.loginStatus.className = 'status err';
+    return;
+  }
+  // Cerca l'utente Eleonora e aprine la vista
+  const eleonoraUser = users.find(u => normalizePhone(u.phone) === phone);
+  if (eleonoraUser) {
+    openUserView(eleonoraUser);
+  } else {
+    els.loginStatus.textContent = 'Utente non trovato.';
+    els.loginStatus.className = 'status err';
+  }
+  return;
+}
 
       const user = users.find(u => normalizePhone(u.phone) === phone);
       if (!user) {
